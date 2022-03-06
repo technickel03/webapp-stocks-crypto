@@ -8,11 +8,13 @@ def viz(ticker_sym : str,date,interval):
     ticker = yf.download(ticker_sym,start=date,interval=interval)
     df = ticker.copy()
     df = df[['Close']]
+    st.markdown(f"Position Chart - interval : {interval}")
     st.line_chart(df)
     rolling_mean = df.Close.rolling(window=200).mean()
     rolling_mean2 = df.Close.rolling(window=50).mean()
     df["200 DMA"] = rolling_mean
     df["50 DMA"] = rolling_mean2
+    st.markdown("Moving Average Chart")
     st.line_chart(df)
 choice = st.selectbox("Select Stocks/Crypto",("stocks","crypto"))
 if choice == "stocks":
