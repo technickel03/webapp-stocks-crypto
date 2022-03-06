@@ -18,7 +18,7 @@ choice = st.selectbox("Select Stocks/Crypto",("stocks","crypto"))
 if choice == "stocks":
     df = pd.read_csv("nifty500.csv")
     ticker  = st.selectbox("select company name",df["Company Name"])
-    ticker_sym = df.loc[ticker == df["Company Name"],"Symbol"][0]+".ns"
+    ticker_sym = df.loc[ticker == df["Company Name"],"Symbol"].item()+".ns"
 else:
     ticker_sym = st.text_input("Enter Crypto Ticker",placeholder = "Example : btc-inr , Eth-inr")
 st.markdown(str(ticker_sym))
