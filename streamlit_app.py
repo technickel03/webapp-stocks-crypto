@@ -21,7 +21,7 @@ def viz(ticker_sym : str,date):
     df["50 DMA"] = rolling_mean2
     st.line_chart(df)
 df = pd.read_csv("nifty500.csv")
-ticker  = st.selectbox(df["Company Name"])
+ticker  = st.selectbox("select company name",df["Company Name"])
 ticker_sym = df.loc[ticker == df["Company Name"],"Symbol"]
 date_str = st.date_input("select date")
 formatted_date = datetime.datetime.strptime(str(date_str), "%Y-%m-%d").strftime("%Y-%m-%d")
