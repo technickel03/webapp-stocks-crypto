@@ -6,6 +6,8 @@ import datetime
 
 def viz(ticker_sym : str,date,interval):
     ticker = yf.download(ticker_sym,start=date,interval=interval)
+    st.markdown("Volume Traded")
+    st.bar_chart(ticker["Volume"])
     df = ticker.copy()
     df = df[['Close']]
     st.markdown(f"Position Chart - interval : {interval}")
